@@ -1,7 +1,22 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import legacy from '@vitejs/plugin-legacy'
+import vue from '@vitejs/plugin-vue'
+import path from 'path'
+import { defineConfig } from 'vite'
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
-  base: '/encryptor-app/', // <-- Mahalaga ito para sa GitHub Pages
-});
+  plugins: [
+    vue(),
+    legacy()
+  ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+  base: '/encryptor-app/', // <-- MAHALAGA ITO PARA SA GITHUB PAGES
+  test: {
+    globals: true,
+    environment: 'jsdom'
+  }
+})
