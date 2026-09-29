@@ -33,6 +33,8 @@ jobs:
       - name: Install Capacitor Android
         run: |
           npm install @capacitor/android
+          # Tanggalin ang lumang android folder kung meron man
+          rm -rf android
           npx cap add android
           npx cap sync
 
